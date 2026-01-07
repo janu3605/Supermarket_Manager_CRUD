@@ -20,10 +20,10 @@
 		<id name="sid" column="sid" type="integer">
 			<generator class="increment" />
 		</id>
-		<property name="date" column="date" type="date" />
-		<bag name="productList" cascade="all">
+		<property name="date" column="sale_date" type="date" />
+		<bag name="productList" table="sale_products" cascade="all">
 			<key column="sid" />
-			<one-to-many class="Product" />
+			<many-to-many class="Product" column="pid" />
 		</bag>
 
 		<property name="quantity" column="quantity" type="integer" />
