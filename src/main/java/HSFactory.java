@@ -8,7 +8,6 @@ public class HSFactory {
 	static {
 		Configuration cfg = new Configuration();
 		cfg.configure("/hibernate.cfg.xml");
-		cfg.addAnnotatedClass(Product.class);
 		factory = cfg.buildSessionFactory();
 	}
 

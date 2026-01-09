@@ -7,17 +7,17 @@ public class SaveProducts1 {
 		Transaction tx = session.beginTransaction();
 
 		try {
-			Product p1 = new Product(0, "Whole Milk 1L", "Dairy", 60, 20);
-			Product p2 = new Product(0, "Brown Bread", "Bakery", 45, 15);
-			Product p3 = new Product(0, "Salted Butter", "Dairy", 110, 10);
+			Product p1 = new Product(0, "Whole Milk 1L", "Dairy", 60);
+			Product p2 = new Product(0, "Brown Bread", "Bakery", 45);
+			Product p3 = new Product(0, "Salted Butter", "Dairy", 110);
 
-			Product p4 = new Product(0, "Potato Chips", "Snacks", 20, 50);
-			Product p5 = new Product(0, "Coca Cola 500ml", "Beverages", 40, 30);
-			Product p6 = new Product(0, "Dark Chocolate", "Snacks", 80, 25);
+			Product p4 = new Product(0, "Potato Chips", "Snacks", 20);
+			Product p5 = new Product(0, "Coca Cola 500ml", "Beverages", 40);
+			Product p6 = new Product(0, "Dark Chocolate", "Snacks", 80);
 
-			Product p7 = new Product(0, "Basmati Rice 1kg", "Grains", 150, 40);
-			Product p8 = new Product(0, "Organic Honey", "Essentials", 250, 5);
-			Product p9 = new Product(0, "Dish Soap", "Household", 55, 12);
+			Product p7 = new Product(0, "Basmati Rice 1kg", "Grains", 150);
+			Product p8 = new Product(0, "Organic Honey", "Essentials", 250);
+			Product p9 = new Product(0, "Dish Soap", "Household", 55);
 
 			session.persist(p1);
 			session.persist(p2);

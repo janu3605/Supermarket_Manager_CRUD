@@ -4,21 +4,29 @@ public class Product {
 	private int pid;
 	private String pname;
 	private String category;
-	private int price;
-	private int quantity;
-	
+	private double price;
+
+	private Discount discount;
 
 	public Product() {
 		super();
 	}
 
-	public Product(int pid, String pname, String category, int price, int quantity) {
+	public Product(int pid, String pname, String category, double price) {
 		super();
 		this.pid = pid;
 		this.pname = pname;
 		this.category = category;
 		this.price = price;
-		this.quantity = quantity;
+
+	}
+
+	public Discount getDiscount() {
+		return discount;
+	}
+
+	public void setDiscount(Discount discount) {
+		this.discount = discount;
 	}
 
 	public int getPid() {
@@ -45,25 +53,17 @@ public class Product {
 		this.category = category;
 	}
 
-	public int getPrice() {
+	public double getPrice() {
 		return price;
 	}
 
-	public void setPrice(int price) {
+	public void setPrice(double price) {
 		this.price = price;
-	}
-
-	public int getQuantity() {
-		return quantity;
-	}
-
-	public void setQuantity(int quantity) {
-		this.quantity = quantity;
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(category, pid, pname, price, quantity);
+		return Objects.hash(category, pid, pname, price);
 	}
 
 	@Override
@@ -76,13 +76,12 @@ public class Product {
 			return false;
 		Product other = (Product) obj;
 		return Objects.equals(category, other.category) && pid == other.pid && Objects.equals(pname, other.pname)
-				&& price == other.price && quantity == other.quantity;
+				&& price == other.price;
 	}
 
 	@Override
 	public String toString() {
-		return "Product [pid=" + pid + ", pname=" + pname + ", category=" + category + ", price=" + price
-				+ ", quantity=" + quantity + "]";
+		return "Product [pid=" + pid + ", pname=" + pname + ", category=" + category + ", price=" + price + "]";
 	}
 
 }

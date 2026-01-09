@@ -6,19 +6,17 @@ public class Sale {
 	private int sid;
 	private Date date;
 	private List<Product> productList;
-	private int quantity;
-	private int totalPrice;
+	private double totalPrice;
 
 	public Sale() {
 		super();
 	}
 
-	public Sale(int sid, Date date, List<Product> productList, int quantity, int totalPrice) {
+	public Sale(int sid, Date date, List<Product> productList, double totalPrice) {
 		super();
 		this.sid = sid;
 		this.date = date;
 		this.productList = productList;
-		this.quantity = quantity;
 		this.totalPrice = totalPrice;
 	}
 
@@ -46,25 +44,17 @@ public class Sale {
 		this.productList = productList;
 	}
 
-	public int getQuantity() {
-		return quantity;
-	}
-
-	public void setQuantity(int quantity) {
-		this.quantity = quantity;
-	}
-
-	public int getTotalPrice() {
+	public double getTotalPrice() {
 		return totalPrice;
 	}
 
-	public void setTotalPrice(int totalPrice) {
+	public void setTotalPrice(double totalPrice) {
 		this.totalPrice = totalPrice;
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(date, productList, quantity, sid, totalPrice);
+		return Objects.hash(date, productList, sid, totalPrice);
 	}
 
 	@Override
@@ -76,14 +66,14 @@ public class Sale {
 		if (getClass() != obj.getClass())
 			return false;
 		Sale other = (Sale) obj;
-		return Objects.equals(date, other.date) && Objects.equals(productList, other.productList)
-				&& quantity == other.quantity && sid == other.sid && totalPrice == other.totalPrice;
+		return Objects.equals(date, other.date) && Objects.equals(productList, other.productList) && sid == other.sid
+				&& totalPrice == other.totalPrice;
 	}
 
 	@Override
 	public String toString() {
-		return "Sale [sid=" + sid + ", date=" + date + ", productList=" + productList + ", quantity=" + quantity
-				+ ", totalPrice=" + totalPrice + "]";
+		return "Sale [sid=" + sid + ", date=" + date + ", productList=" + productList + ", totalPrice=" + totalPrice
+				+ "]";
 	}
 
 }

@@ -5,14 +5,15 @@
   "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping>
+
 	<class name="Product" table="Product">
 		<id name="pid" column="pid" type="integer">
 			<generator class="increment" />
 		</id>
 		<property name="pname" column="pname" type="string" />
 		<property name="category" column="category" type="string" />
-		<property name="price" column="price" type="integer" />
-		<property name="quantity" column="quantity" type="integer" />
+		<property name="price" column="price" type="double" />
+		<many-to-one name="discount" column="discount_id" class="Discount" not-null="false"/>
 
 	</class>
 
@@ -26,9 +27,29 @@
 			<many-to-many class="Product" column="pid" />
 		</bag>
 
+		<property name="totalPrice" column="totalPrice" type="double" />
+
+	</class>
+
+	<class name="Discount" table="Discount">
+		<id name="id" column="id" type="integer">
+			<generator class="increment" />
+		</id>
+		<property name="offer_name" column="offer_name"
+			type="string" />
+		<property name="percentage" column="percentage" type="double" />
+
+
+	</class>
+
+
+	<class name="Inventory" table="Inventory">
+		<id name="id" column="id" type="integer">
+			<generator class="increment" />
+		</id>
 		<property name="quantity" column="quantity" type="integer" />
-		<property name="totalPrice" column="totalPrice"
-			type="integer" />
+		<property name="lastUpDate" column="lastUpDate" type="date" />
+		<many-to-one name="product" column = "pid" class ="Product" unique="true" cascade="all"/>
 
 	</class>
 
