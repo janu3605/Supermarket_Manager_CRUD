@@ -1,3 +1,4 @@
+import java.util.Date;
 import java.util.List;
 
 import org.hibernate.Session;
@@ -5,13 +6,17 @@ import org.hibernate.Transaction;
 import org.hibernate.query.Query;
 
 public class ProductManager {
+
 	public static void addProduct(String name, String category, double price) {
 		Session session = HSFactory.getSession();
 		Transaction tx = session.beginTransaction();
 
 		try {
 			Product p = new Product(0, name, category, price);
+			Inventory i = new Inventory(0, 0, new Date(), p);
 			session.persist(p);
+			session.persist(i);
+
 			tx.commit();
 			System.out.println("Product Inserted");
 		} catch (Exception e) {
@@ -27,7 +32,8 @@ public class ProductManager {
 		Transaction tx = session.beginTransaction();
 
 		try {
-			Query<Product> q = session.createQuery("FROM Product p WHERE p.pname = :n and p.category = :c", Product.class);
+			Query<Product> q = session.createQuery("FROM Product p WHERE p.pname = :n and p.category = :c",
+					Product.class);
 			q.setParameter("n", name);
 			q.setParameter("c", category);
 

@@ -7,6 +7,7 @@ import org.hibernate.Transaction;
 import org.hibernate.query.Query;
 
 public class SalesManager {
+
 	public static void makeSale(List<String> productNames) {
 		Session session = HSFactory.getSession();
 		Transaction tx = session.beginTransaction();
@@ -30,14 +31,7 @@ public class SalesManager {
 					continue;
 				}
 
-				Query<Inventory> iq = session.createQuery("From Inventory i where i.product.pid = :pid",
-						Inventory.class);
-				iq.setParameter("pid", p.getPid());
-				Inventory stock = iq.uniqueResult();
-
-				if (stock != null && stock.getQuantity() > 0) {
-					stock.setQuantity(stock.getQuantity() - 1);
-					session.merge(stock);
+				if (InventoryManager.checkStock(p, session) == true) {
 
 					double itemPrice = p.getPrice();
 

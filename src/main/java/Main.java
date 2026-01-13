@@ -7,12 +7,14 @@ public class Main {
 		Scanner sc = new Scanner(System.in);
 
 		ProductManager ProductM = new ProductManager();
+		InventoryManager InventoryM = new InventoryManager();
 
 		while (true) {
 			System.out.println();
 			System.out.println("Enter action Required:");
 			System.out.println("1. Add Product to DB" + "\n" + "2. Find Product" + "\n" + "3. Iterate through Products"
-					+ "\n" + "4. Delete Product" + "\n" + "5. Make a Sale" + "\n" + "6. Exit");
+					+ "\n" + "4. Delete Product" + "\n" + "5. Make a Sale" + "\n" + "6. Add Stock" + "\n"
+					+ "7. Remove Stock" + "\n" + "8. Check Stock" + "\n" + "9. Exit");
 
 			int n = sc.nextInt();
 			sc.nextLine();
@@ -39,7 +41,7 @@ public class Main {
 				break;
 			case 4:
 				System.out.println("Enter Name, Category");
-				String[] inpt2 = sc.nextLine().split(" ");
+				String[] inpt2 = sc.nextLine().split(" ");  
 				String name2 = inpt2[0];
 				String category2 = inpt2[1];
 
@@ -61,6 +63,28 @@ public class Main {
 
 				break;
 			case 6:
+				System.out.println("Enter product name and quantity stocked");
+				String[] inpt3 = sc.nextLine().split(" ");
+				String name3 = inpt3[0];
+				int quantity = Integer.parseInt((inpt3)[1]);
+				InventoryM.addStock(name3, quantity);
+				break;
+
+			case 7:
+				System.out.println("Enter product name and quantity stocked");
+				String[] inpt4 = sc.nextLine().split(" ");
+				String name4 = inpt4[0];
+				int quantity1 = Integer.parseInt((inpt4)[1]);
+				InventoryM.removeStock(name4, quantity1);
+				break;
+
+			case 8:
+				System.out.println("Enter product name");
+				String name5 = sc.nextLine();
+				InventoryM.checkStock(name5);
+				break;
+
+			case 9:
 				System.exit(0);
 				break;
 			}
